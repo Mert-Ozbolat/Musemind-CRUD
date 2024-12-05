@@ -18,22 +18,32 @@ function App() {
                 headerBackTitleStyle: {
                     fontSize: 22
                 },
+                headerBackTitle: "Back",
+                headerTintColor: ThemeColors.black,
                 headerShadowVisible: false,
-                headerRight: () => {
-                    <View style={{
-                        flexDirection: 'row',
-                    }}>
-                        <Pressable>
-                            <Notification size="32" color={ThemeColors.black} />
-                        </Pressable>
-                        <Pressable style={{ marginLeft: 17 }}>
-                            <TaskSquare size="30" color={ThemeColors.black} />
-                        </Pressable>
-                    </View>
-                }
             })}
         >
-            <Stack.Screen name={DASHBOARD} component={Dashboard} />
+            <Stack.Screen
+                options={({ route, navigation }) => ({
+                    headerBackTitleStyle: {
+                        fontSize: 22
+                    },
+                    headerRight: () => {
+                        <View style={{
+                            flexDirection: 'row',
+                        }}>
+                            <Pressable>
+                                <Notification size="32" color={ThemeColors.black} />
+                            </Pressable>
+                            <Pressable
+                                onPress={() => navigation.navigate(TASKS)}
+                                style={{ marginLeft: 17 }}>
+                                <TaskSquare size="30" color={ThemeColors.black} />
+                            </Pressable>
+                        </View>
+                    }
+                })}
+                name={DASHBOARD} component={Dashboard} />
             <Stack.Screen name={TASKS} component={Tasks} />
         </Stack.Navigator>
     )

@@ -29,22 +29,22 @@ const Dashboard = () => {
                 </View>
                 <SectionTitle title={"Project Statistics"} />
 
-                <View>
-
+                <View style={{ marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
                     <VictoryPie
                         innerRadius={75}
                         padAngle={1}
+                        width={350}
+                        height={350}
                         data={[
-                            { x: 'Cats', y: 30 },
-                            { x: 'Cats', y: 30 },
-                            { x: 'Cats', y: 30 },
-                            { x: 'Cats', y: 30 },
+                            { x: '"In Progress', y: 30 },
+                            { x: 'In Review', y: 30 },
+                            { x: 'On Hold', y: 30 },
+                            { x: 'Completed', y: 30 },
                         ]}
                     >
-
                     </VictoryPie>
-
                 </View>
+
 
             </ScrollView>
         </View>

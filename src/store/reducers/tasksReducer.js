@@ -4,7 +4,20 @@ const { ADDTASK } = require("../types/tasksTypes")
 
 
 const initialState = {
-    tasks: [],
+    tasks: [
+        {
+            id: 1,
+            title: "Dasboard is ready",
+            status: "In Progress",
+            date: "20 May 2024"
+        },
+        {
+            id: 2,
+            title: "Dasboard is ready",
+            status: "On Hold",
+            date: "07 Oct 2024"
+        },
+    ],
     testMessage: "Helloww",
     taskStatus: [
         {
