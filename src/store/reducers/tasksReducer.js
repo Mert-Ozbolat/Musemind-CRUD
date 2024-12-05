@@ -1,8 +1,37 @@
+import { ThemeColors } from "../../theme/color"
+
 const { ADDTASK } = require("../types/tasksTypes")
 
 
 const initialState = {
     tasks: [],
+    testMessage: "Helloww",
+    taskStatus: [
+        {
+            id: 1,
+            status: "In Progress",
+            value: 0,
+            color: ThemeColors.blue
+        },
+        {
+            id: 2,
+            status: "In Review",
+            value: 0,
+            color: ThemeColors.pink
+        },
+        {
+            id: 3,
+            status: "On Hold",
+            value: 0,
+            color: ThemeColors.yellow
+        },
+        {
+            id: 4,
+            status: "Completed",
+            value: 0,
+            color: ThemeColors.green
+        },
+    ]
 }
 
 const tasksReducer = (state = initialState, action) => {

@@ -1,16 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import RootNavigator from './src/router/rootNavigatior'
+import MainNavigatior from './src/router/rootNavigatior'
+import { Provider } from 'react-redux'
+import store from './src/store'
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MainNavigatior />
+      </NavigationContainer>
+    </Provider>
   )
 }
 
 export default App
-
-const styles = StyleSheet.create({})
