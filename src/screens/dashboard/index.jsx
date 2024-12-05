@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import SectionTitle from '../../components/ui/sectionTitle'
 import TaskStatusCard from '../../components/dashboard/taskStatusCard'
 import { defaultScreenStyles } from '../../styles/defaultSecreenStyle'
+import { VictoryPie, VictoryChart, VictoryTheme } from 'victory-native'
 
 
 
@@ -27,6 +28,24 @@ const Dashboard = () => {
                     }
                 </View>
                 <SectionTitle title={"Project Statistics"} />
+
+                <View>
+
+                    <VictoryPie
+                        innerRadius={75}
+                        padAngle={1}
+                        data={[
+                            { x: 'Cats', y: 30 },
+                            { x: 'Cats', y: 30 },
+                            { x: 'Cats', y: 30 },
+                            { x: 'Cats', y: 30 },
+                        ]}
+                    >
+
+                    </VictoryPie>
+
+                </View>
+
             </ScrollView>
         </View>
     )

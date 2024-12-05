@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Dashboard from '../screens/dashboard';
 import Tasks from '../screens/tasks';
 import { DASHBOARD, TASKS } from '../utils/routes';
-import { Notification } from 'iconsax-react-native';
+import { Notification, TaskSquare } from 'iconsax-react-native';
 import { ThemeColors } from '../theme/color';
 
 
@@ -20,9 +20,16 @@ function App() {
                 },
                 headerShadowVisible: false,
                 headerRight: () => {
-                    <Pressable>
-                        <Notification size="32" color={ThemeColors.black} />
-                    </Pressable>
+                    <View style={{
+                        flexDirection: 'row',
+                    }}>
+                        <Pressable>
+                            <Notification size="32" color={ThemeColors.black} />
+                        </Pressable>
+                        <Pressable style={{ marginLeft: 17 }}>
+                            <TaskSquare size="30" color={ThemeColors.black} />
+                        </Pressable>
+                    </View>
                 }
             })}
         >
