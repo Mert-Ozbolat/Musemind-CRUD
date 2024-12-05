@@ -4,15 +4,19 @@ import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Dashboard from '../screens/dashboard';
 import Tasks from '../screens/tasks';
+import { DASHBOARD, TASKS } from '../utils/routes';
 
 
-const RootStack = createNativeStackNavigator({
-    screens: {
-        Dashboard: Dashboard,
-        Tasks: Tasks
-    },
-});
+const Stack = createNativeStackNavigator();
 
-const RootNavigator = createStaticNavigation(RootStack);
+function App() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name={DASHBOARD} component={Dashboard} />
+            <Stack.Screen name={TASKS} component={Tasks} />
+        </Stack.Navigator>
+    )
+}
 
-export default RootNavigator;
+export default App;
+
