@@ -1,6 +1,7 @@
 import { ThemeColors } from "../../theme/color"
+import { UPDATETASK } from "../../utils/routes"
 
-const { ADDTASK } = require("../types/tasksTypes")
+const { ADDTASK, DELETETASK, UPDATETASK } = require("../types/tasksTypes")
 
 
 const initialState = {
@@ -51,7 +52,15 @@ const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADDTASK:
             return { ...state, tasks: [...state.tasks, action.payload] }
-
+        case DELETETASK:
+            return { ...state, tasks: state.tasks?.filter(task => task.id != action.payload) }
+        case UPDATETASK:
+            return {
+                ...state,
+                tasks: state?.tasks?.map(task =>
+                    task.id != action.payload.id ? action.payload : task,
+                ),
+            };
         default:
             return state
     }

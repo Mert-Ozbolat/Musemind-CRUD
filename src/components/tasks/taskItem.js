@@ -1,11 +1,34 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { ThemeColors } from '../../theme/color'
-import { Calendar1, More } from 'iconsax-react-native'
+import { Calendar1, Edit, Trash } from 'iconsax-react-native'
 import { setColor } from '../../utils/functions'
+import { useDispatch } from 'react-redux'
+import { deleteTask } from '../../store/actions/tasksActions'
+import { UPDATETASK } from '../../utils/routes'
 
 
 const taskItem = ({ item }) => {
+
+    const dispatch = useDispatch()
+
+
+
+    const deleteItem = () => {
+        Alert.alert('Warning', 'Do you want to remove the task?', [
+            {
+                text: 'Sil',
+                onPress: () => dispatch(deleteTask(item.id)),
+                style: 'destructive',
+            },
+            {
+                text: 'İptal',
+                onPress: () => console.log('İptal'),
+                style: 'cancel',
+            },
+        ]);
+    };
+
     return (
         <View style={styles.container}>
 
@@ -35,9 +58,16 @@ const taskItem = ({ item }) => {
 
             </View>
 
-            <View>
-                <More size='25' color={ThemeColors.black} variant='Outline' />
+            <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity onPress={deleteItem} style={{ marginHorizontal: 10 }}>
+                    <Trash size='25' color={ThemeColors.black} variant='Outline' />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => navigation.navigate(UPDATETASK, { task: item })}>
+                    <Edit size='25' color={ThemeColors.black} variant='Outline' />
+                </TouchableOpacity>
             </View>
+
         </View>
     )
 }

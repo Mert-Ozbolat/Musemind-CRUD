@@ -4,10 +4,11 @@ import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Dashboard from '../screens/dashboard';
 import Tasks from '../screens/tasks';
-import { ADDTASKS, DASHBOARD, TASKS } from '../utils/routes';
+import { ADDTASKS, DASHBOARD, TASKS, UPDATETASK } from '../utils/routes';
 import { Notification, TaskSquare } from 'iconsax-react-native';
 import { ThemeColors } from '../theme/color';
 import AddTask from '../components/tasks/addTask';
+import UpdateTask from '../screens/tasks/updateTask';
 
 
 const Stack = createNativeStackNavigator();
@@ -45,8 +46,11 @@ function App() {
                     }
                 })}
                 name={DASHBOARD} component={Dashboard} />
+
             <Stack.Screen name={TASKS} component={Tasks} />
             <Stack.Screen name={ADDTASKS} component={AddTask} />
+            <Stack.Screen name={UPDATETASK} component={UpdateTask} />
+
         </Stack.Navigator>
     )
 }
