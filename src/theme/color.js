@@ -7,6 +7,7 @@ const ThemeColors = {
     white: '#fff',
     black: '#181818',
     gray: '#dddddd',
+    input: '#dfeaea',
 }
 
 export { ThemeColors }

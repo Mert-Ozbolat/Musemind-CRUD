@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
 
     input: {
         padding: 10,
-        backgroundColor: ThemeColors.gray,
+        backgroundColor: ThemeColors.input,
         fontSize: 16,
         borderRadius: 5,
-        paddingVertical: 15
+        paddingVertical: 15,
     }
 })
