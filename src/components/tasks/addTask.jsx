@@ -8,7 +8,6 @@ import { addNewTask } from '../../store/actions/tasksActions';
 import { statusTypes } from '../../utils/constants';
 
 const AddTask = () => {
-    const [id, setId] = useState(0)
     const [title, setTitle] = useState('New Task2');
     const [date, setDate] = useState('11 Eylül');
     const [status, setStatus] = useState(statusTypes.INREVIEW);
@@ -17,12 +16,11 @@ const AddTask = () => {
 
     const saveTask = () => {
         const form = {
-            id: id,
+            id: Date.now(),
             title: title,
             status: status,
             date: date,
         }
-        setId(id + 1)
         dispatch(addNewTask(task))
     }
 

@@ -11,6 +11,16 @@ import { VictoryPie, VictoryChart, VictoryTheme } from 'victory-native'
 const Dashboard = () => {
 
     const { taskStatus } = useSelector(state => state?.tasks);
+    const countTaskStatus = () => {
+        return tasks.filter(item => item?.status === status).length
+    }
+
+
+    const calculateTaskStatus = status => {
+        const totalTask = tasks.length;
+        const taskCount = tasks.filter(item => item?.status === status.length);
+        const percentage = ((totalTask / taskCount) * 100).toFixed(2);
+    };
 
     return (
         <View style={defaultScreenStyles.container}>
@@ -23,7 +33,7 @@ const Dashboard = () => {
                 }}>
                     {
                         taskStatus.map((item, index) => (
-                            <TaskStatusCard item={item} key={item.id} />
+                            <TaskStatusCard value={countTaskStatus(item.status)} item={item} key={item.id} />
                         ))
                     }
                 </View>
@@ -36,10 +46,22 @@ const Dashboard = () => {
                         width={350}
                         height={350}
                         data={[
-                            { x: '"In Progress', y: 30 },
-                            { x: 'In Review', y: 30 },
-                            { x: 'On Hold', y: 30 },
-                            { x: 'Completed', y: 30 },
+                            {
+                                x: calculateTaskStatus(statusType.INPROGRESS),
+                                y: calculateTaskStatus(statusType.INPROGRESS),
+                            },
+                            {
+                                x: calculateTaskStatus(statusType.INREVIEW),
+                                y: calculateTaskStatus(statusType.INREVIEW),
+                            },
+                            {
+                                x: calculateTaskStatus(statusType.COMPLETED),
+                                y: calculateTaskStatus(statusType.COMPLETED),
+                            },
+                            {
+                                x: calculateTaskStatus(statusType.ONHOLD),
+                                y: calculateTaskStatus(statusType.ONHOLD),
+                            },
                         ]}
                     >
                     </VictoryPie>
